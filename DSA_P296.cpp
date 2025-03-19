@@ -8,11 +8,10 @@ int main(){
     for(int i = 1; i <= n; i++){
         cin >> a[i];
     }
-    int cnt[100000] = {0}, Max = 0;
-    cnt[1] = Max = max(Max, a[1]);
+    int cnt[100000] = {0};
+    cnt[1] = a[1];
     for(int i = 2; i <= n; i++){
-        Max = max(Max, Max + a[i]);
-        cnt[i] = Max;
+        cnt[i] = max(cnt[i - 1], cnt[i - 1] + a[i]);
     }
     while(q--){
         int l, r;

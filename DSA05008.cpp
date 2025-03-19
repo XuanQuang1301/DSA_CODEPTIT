@@ -7,19 +7,16 @@ int main(){
     while(t--){
         int n, s;
         cin >> n >> s;
-
-        int a[n], tmp[s + 1] = {0};
+        int tmp[201] = {0};
         tmp[0] = 1;
-
         for(int i = 0; i < n; i++){
-            cin >> a[i];
-            for(int j = s; j >= 1; j--){
-                if(j >= a[i] && tmp[j] == 0 && tmp[j - a[i]] == 1){
-                    //xet xem co tap con nao co tong bang tmp[j] hay 0
+            int x; cin >> x;
+            for(int j = s; j >= 0; j--){
+                if(j >= x && tmp[j] == 0 && tmp[j - x] == 1){
                     tmp[j] = 1;
                 }
             }
-        }   
-        cout << (tmp[s] == 1 ? "YES" : "NO") << endl;
+        }
+        cout << (tmp[s] == 1 ? "YES" : "NO") << endl ;
     }
 }

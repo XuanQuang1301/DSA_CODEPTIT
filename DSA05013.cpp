@@ -7,15 +7,16 @@ int main(){
     while(t--){
         int n, k;
         cin >> n >> k;
-        int d[n + 5] = {0};
-        d[0] = 1;
+        int dp[n + 1] = {0};
+        dp[0] = 1;
         for(int i = 1; i <= n; i++){
             for(int j = 1; j <= k; j++){
-                if(i < j) break;
-                //d[i] so cach buoc den bac i
-                d[i] = (d[i] + d[i - j]) % MOD;
+                if(j <= i){
+                    dp[i] = dp[i] +  dp[i - j];
+                    dp[i] %= MOD;
+                }
             }
         }
-        cout << d[n] << endl;
+        cout << dp[n] % MOD << endl;
     }
 }
